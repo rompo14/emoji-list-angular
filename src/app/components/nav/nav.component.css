@@ -1,0 +1,28 @@
+:host {
+  --nav-bg: transparent;
+  --nav-link-bg: #23a393;
+  --nav-link-color: #fff;
+  --nav-link-active: #23a393;
+}
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  line-height: 1.5;
+  background-color: var(--nav-bg);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.app-nav__link {
+  padding: 1rem 1.75rem;
+  color: var(--nav-link-color);
+  transition: all .3s ease-in-out;
+}
+.app-nav__link.active {
+  color: var(--nav-link-active);
+}
+.app-nav__link:hover {
+  background-color: var(--nav-link-bg);
+  color: #fff;
+}

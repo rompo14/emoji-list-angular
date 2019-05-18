@@ -1,0 +1,18 @@
+<table class="emoji-list responsive-table">
+  <thead>
+  <tr>
+    <th class="emoji-list__name">Имя</th>
+    <th class="emoji-list__link">Ссылка</th>
+    <th class="emoji-list__preview"></th>
+    <th class="emoji-list__actions"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let key of list | keys">
+    <td>{{ key }}</td>
+    <td>{{ list[key] }}</td>
+    <td class="text-center"><img src="{{ list[key] }}" alt="" width="25" height="25"></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>

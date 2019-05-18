@@ -1,0 +1,18 @@
+.emoji-list {
+  table-layout: fixed;
+}
+.emoji-list td {
+  word-break: break-all;
+}
+.emoji-list__name {
+  width: 20%;
+}
+.emoji-list__link {
+  width: 50%;
+}
+.emoji-list__preview {
+  width: 10%;
+}
+.emoji-list__actions {
+  width: 20%;
+}
