@@ -17,9 +17,9 @@ import { TitleComponent } from './components/title/title.component';
 import { KeysPipe } from './pipes/keys.pipe';
 
 export const routes: Route[] = [
-  { path: 'fav', component: FavComponent, data: { title: 'Любимые' } },
-  { path: 'del', component: DelComponent, data: { title: 'Удаленные' } },
-  { path: '', component: HomeComponent, data: { title: 'Все' } }
+  { path: 'fav', component: FavComponent, data: { id: 'fav', title: 'Любимые' } },
+  { path: 'del', component: DelComponent, data: { id: 'del', title: 'Удаленные' } },
+  { path: '', component: HomeComponent, data: { id: 'all', title: 'Все' } }
 ];
 
 @NgModule({

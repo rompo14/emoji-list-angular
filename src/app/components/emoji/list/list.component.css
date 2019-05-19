@@ -16,3 +16,14 @@
 .emoji-list__actions {
   width: 20%;
 }
+.emoji-list__btn + .emoji-list__btn {
+  margin-left: 10px;
+  transition: all .3s ease-in-out;
+}
+.emoji-list__btn {
+  opacity: .3;
+}
+.emoji-list__btn:hover,
+.emoji-list__btn.active {
+  opacity: 1;
+}

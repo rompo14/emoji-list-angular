@@ -1,33 +1,52 @@
 import {Inject, Injectable, InjectionToken} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 export const EMOJI_URL = new InjectionToken('url');
+export interface Emoji {
+  all: object;
+  fav: object;
+  del: object;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmojiService {
-  // public allEmojis: object = {};
+  private data = {
+    all: JSON.parse(localStorage.getItem('emojis')),
+    fav: {},
+    del: {}
+  };
 
   constructor(
     private httpClient: HttpClient,
     @Inject(EMOJI_URL) private url: string,
   ) {
-    // this.setLocalStorage();
   }
 
   public getHttpData(): Observable<any> {
     return this.httpClient.get<object>(this.url);
   }
 
-  // private setLocalStorage(): Observable<any> {
-  //   if (JSON.parse(localStorage.getItem('allEmojis')) == null) {
-  //     this.getHttpData().subscribe((data) => {
-  //       this.allEmojis = data;
-  //       localStorage.setItem('allEmojis', JSON.stringify(data));
-  //     });
-  //   } else {
-  //     this.allEmojis = JSON.parse(localStorage.getItem('allEmojis'));
-  //   }
-  // }
+  public getData(route): Observable<any> {
+    switch (route) {
+      case 'all':
+        const httpData = this.getHttpData();
+        httpData.subscribe((data) => {
+          if (this.data.all == null) {
+            localStorage.setItem('emojis', JSON.stringify(data));
+            this.data.all = data;
+          }
+        });
+        return of(this.data.all).pipe(
+          switchMap(() => httpData)
+        );
+      case 'fav':
+        return of(this.data.fav);
+      case 'del':
+        return of(this.data.del);
+    }
+  }
 }

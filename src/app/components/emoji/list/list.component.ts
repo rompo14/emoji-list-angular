@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EmojiService } from '../../../services/emoji.service';
 
 @Component({
   selector: 'app-list',
@@ -7,15 +8,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  @Input()
   public list: object = {};
-  constructor(
-    private activatedRoute: ActivatedRoute
-  ) {
 
+  constructor(
+    private emojiService: EmojiService,
+    private route: ActivatedRoute
+  ) {
   }
 
   ngOnInit() {
-    // console.log(this.activatedRoute.snapshot.firstChild.data);
+    this.route.data.subscribe(route => {
+      this.emojiService.getData(route.id).subscribe(data => {
+        this.list = data;
+      });
+    });
   }
 }

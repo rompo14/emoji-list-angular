@@ -1,30 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EmojiService } from '../../services/emoji.service';
+import {Component, OnInit, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class HomeComponent implements OnInit {
-  public list: object = {};
-
-  constructor(
-    private emoji: EmojiService,
-    private activatedRoute: ActivatedRoute
-  ) {
-    if (JSON.parse(localStorage.getItem('allEmojis')) == null) {
-      emoji.getHttpData().subscribe((data) => {
-        this.list = data;
-        localStorage.setItem('allEmojis', JSON.stringify(data));
-      });
-    } else {
-      this.list = JSON.parse(localStorage.getItem('allEmojis'));
-    }
+  constructor() {
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute);
   }
 }

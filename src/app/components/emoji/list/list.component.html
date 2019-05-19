@@ -12,7 +12,10 @@
     <td>{{ key }}</td>
     <td>{{ list[key] }}</td>
     <td class="text-center"><img src="{{ list[key] }}" alt="" width="25" height="25"></td>
-    <td></td>
+    <td class="text-right">
+      <a class="emoji-list__btn btn-floating white z-depth-0" title="Добавить в избранное"><i class="material-icons yellow-text">grade</i></a>
+      <a class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из списка"><i class="material-icons red-text">clear</i></a>
+    </td>
   </tr>
   </tbody>
 </table>
