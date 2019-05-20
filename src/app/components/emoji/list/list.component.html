@@ -1,21 +1,39 @@
-<table class="emoji-list responsive-table">
+<table class="emoji-list">
   <thead>
   <tr>
+    <th class="emoji-list__preview"></th>
     <th class="emoji-list__name">Имя</th>
     <th class="emoji-list__link">Ссылка</th>
-    <th class="emoji-list__preview"></th>
     <th class="emoji-list__actions"></th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let key of list | keys">
-    <td>{{ key }}</td>
-    <td>{{ list[key] }}</td>
-    <td class="text-center"><img src="{{ list[key] }}" alt="" width="25" height="25"></td>
-    <td class="text-right">
-      <a class="emoji-list__btn btn-floating white z-depth-0" title="Добавить в избранное"><i class="material-icons yellow-text">grade</i></a>
-      <a class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из списка"><i class="material-icons red-text">clear</i></a>
-    </td>
-  </tr>
+  <ng-container *ngFor="let item of list | search: emojiService.filter">
+    <tr *ngIf="hideOnRoute(item)">
+      <td class="emoji-list__preview">
+        <div class="emoji-icon">
+          <div class="emoji-icon__balloon">
+            <img src="{{ item.value }}" alt="{{ item.name }}">
+          </div>
+          <img src="{{ item.value }}" alt="{{ item.name }}" width="25" height="25">
+        </div>
+      </td>
+      <td class="emoji-list__name">{{ item.name }}</td>
+      <td class="emoji-list__link">
+        <app-clipboard [text]="item.value"></app-clipboard>
+      </td>
+      <td class="emoji-list__actions text-right">
+        <a *ngIf="this.rt === 'all'" class="emoji-list__btn btn-floating white z-depth-0"
+           [class.active]="item.status == 'fav'" title="Добавить в избранное" (click)="emojiService.toggleFav(item)"><i
+          class="material-icons yellow-text">grade</i></a>
+        <a *ngIf="this.rt === 'fav'" class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из избранного"
+           (click)="emojiService.toggleFav(item)"><i class="material-icons red-text">clear</i></a>
+        <a *ngIf="this.rt === 'all'" class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из списка"
+           (click)="emojiService.del(item)"><i class="material-icons red-text">clear</i></a>
+        <a *ngIf="this.rt === 'del'" class="emoji-list__btn btn-floating white z-depth-0" title="Восстановить"
+           (click)="emojiService.restore(item)"><i class="material-icons blue-text">replay</i></a>
+      </td>
+    </tr>
+  </ng-container>
   </tbody>
 </table>

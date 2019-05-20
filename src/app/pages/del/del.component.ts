@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-del',
@@ -7,11 +6,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./del.component.css']
 })
 export class DelComponent implements OnInit {
-  constructor(
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor() {
+  }
 
   ngOnInit() {
-    // console.log(this);
+
   }
 }

@@ -1,6 +1,6 @@
-import {Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EmojiService } from '../../../services/emoji.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {EmojiService, Emojis} from '../../../services/emoji.service';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +8,8 @@ import { EmojiService } from '../../../services/emoji.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  public list: object = {};
+  public list: Emojis = [];
+  public rt: string;
 
   constructor(
     private emojiService: EmojiService,
@@ -18,9 +19,17 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(route => {
+      this.rt = route.id;
       this.emojiService.getData(route.id).subscribe(data => {
         this.list = data;
       });
     });
+  }
+
+  public hideOnRoute(item) {
+    if (item.status !== 'fav') {
+      return item.status === this.rt;
+    }
+    return true;
   }
 }

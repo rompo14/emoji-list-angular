@@ -2,18 +2,24 @@
   <header class="app-header" role="banner">
     <div class="container">
       <div class="app-topbar row">
-        <div class="col m8">
+        <div class="col s12 m8 d-flex aic">
+          <a class="sidenav-toggler full hide-on-large-only" (click)="sidenav = !sidenav"><i class="material-icons">menu</i></a>
           <app-title></app-title>
         </div>
-        <div class="col m4">
+        <div class="col s12 m4">
           <app-search></app-search>
         </div>
       </div>
     </div>
-    <div class="app-sidenav sidenav sidenav-fixed">
-      <div class="app-logo">Github emojis</div>
+    <div class="app-sidenav sidenav sidenav-fixed" [class.active]="sidenav">
+      <div class="app-logo">
+        <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f9c0.png?v8" width="23" height="23">
+        <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8" width="23" height="23">
+        Github emojis
+      </div>
       <app-nav></app-nav>
     </div>
+    <div class="app-layout" [class.active]="sidenav" (click)="sidenav = !sidenav"></div>
   </header>
   <main class="app-main" role="main">
     <div class="container">
