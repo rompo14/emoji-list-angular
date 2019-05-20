@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Route} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { ClipboardModule } from 'ngx-clipboard';
+import {ClipboardModule} from 'ngx-clipboard';
 
 import {EmojiService, EMOJI_URL} from './services/emoji.service';
 
@@ -17,7 +17,7 @@ import {DelComponent} from './pages/del/del.component';
 import {TitleComponent} from './components/title/title.component';
 import {KeysPipe} from './pipes/keys.pipe';
 import {SearchPipe} from './pipes/search.pipe';
-import { ClipboardComponent } from './components/clipboard/clipboard.component';
+import {ClipboardComponent} from './components/clipboard/clipboard.component';
 
 export const routes: Route[] = [
   {path: 'fav', component: FavComponent, data: {id: 'fav', title: 'Любимые'}},
