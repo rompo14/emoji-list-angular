@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ClipboardComponent } from './clipboard.component';
+import {ClipboardComponent} from './clipboard.component';
+import {ClipboardModule} from 'ngx-clipboard';
 
 describe('ClipboardComponent', () => {
   let component: ClipboardComponent;
@@ -8,9 +9,10 @@ describe('ClipboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClipboardComponent ]
+      declarations: [ClipboardComponent],
+      imports: [ClipboardModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -49,7 +49,6 @@ export class EmojiService {
   public getData(route): Observable<any> {
     switch (route) {
       case 'all':
-        // const httpData = this.getHttpData();
         return of(this.data.filter(item => {
           return item.status !== 'del';
         }));

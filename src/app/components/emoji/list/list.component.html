@@ -23,9 +23,12 @@
         <app-clipboard [text]="item.value"></app-clipboard>
       </td>
       <td class="emoji-list__actions text-right">
-        <a *ngIf="this.rt === 'all'" class="emoji-list__btn btn-floating white z-depth-0"
-           [class.active]="item.status == 'fav'" title="Добавить в избранное" (click)="emojiService.toggleFav(item)"><i
-          class="material-icons yellow-text">grade</i></a>
+        <a *ngIf="this.rt === 'all'"
+           class="emoji-list__btn btn-floating white z-depth-0"
+           [class.active]="item.status == 'fav'"
+           title="Добавить в избранное"
+           (click)="emojiService.toggleFav(item)">
+          <i class="material-icons yellow-text">grade</i></a>
         <a *ngIf="this.rt === 'fav'" class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из избранного"
            (click)="emojiService.toggleFav(item)"><i class="material-icons red-text">clear</i></a>
         <a *ngIf="this.rt === 'all'" class="emoji-list__btn btn-floating white z-depth-0" title="Удалить из списка"

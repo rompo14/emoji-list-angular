@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-title',
@@ -8,6 +8,7 @@ import {Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 })
 export class TitleComponent implements OnInit {
   public title;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
